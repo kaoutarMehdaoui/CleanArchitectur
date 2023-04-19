@@ -54,6 +54,9 @@ namespace Application.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AdherentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -71,7 +74,25 @@ namespace Application.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdherentId");
+
                     b.ToTable("livre");
+                });
+
+            modelBuilder.Entity("Domain.Model.Livre", b =>
+                {
+                    b.HasOne("Domain.Model.Adherent", "Adherent")
+                        .WithMany("livres")
+                        .HasForeignKey("AdherentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Adherent");
+                });
+
+            modelBuilder.Entity("Domain.Model.Adherent", b =>
+                {
+                    b.Navigation("livres");
                 });
 #pragma warning restore 612, 618
         }

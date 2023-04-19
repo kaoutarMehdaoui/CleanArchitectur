@@ -1,5 +1,6 @@
 
 using Application.Data;
+using Application.MapperConfig;
 using Application.Repository;
 using Infrastructure.Contrat;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyContext>(c=>c.UseSqlServer(connection));
 builder.Services.AddScoped(typeof(IGenerique<>),typeof(GeneriqueEmpl<>));
+builder.Services.AddAutoMapper(typeof(MapperConfig));
+
+
 
 
 var app = builder.Build();

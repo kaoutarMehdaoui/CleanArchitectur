@@ -5,6 +5,9 @@ C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bi
 C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\cleanArchitectureBiblo.runtimeconfig.json
 C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\cleanArchitectureBiblo.dll
 C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\cleanArchitectureBiblo.pdb
+C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\AutoMapper.Extensions.ExpressionMapping.dll
+C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\Kmehdaoui\source\repos\cleanArchitectureBiblo\cleanArchitectureBiblo\bin\Debug\net7.0\Humanizer.dll

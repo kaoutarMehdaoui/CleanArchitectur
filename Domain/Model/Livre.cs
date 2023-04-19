@@ -11,5 +11,7 @@ namespace Domain.Model
         public int nbrpage { get; set; }
         public string type { get; set; }
         public string tome { get; set; }
+        public int AdherentId { get;set; }
+        public Adherent Adherent { get; set; }
     }
 }

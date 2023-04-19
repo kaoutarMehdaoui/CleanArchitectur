@@ -1,7 +1,11 @@
-﻿using Domain.Model;
+﻿using AutoMapper;
+using cleanArchitectureBiblo.ModelDTO;
+using Domain.Model;
+
 using Infrastructure.Contrat;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace cleanArchitectureBiblo.Controllers
 {
@@ -10,38 +14,53 @@ namespace cleanArchitectureBiblo.Controllers
     public class AdherentController : ControllerBase
     {
         private readonly IGenerique<Adherent> _adhrent;
-        public AdherentController(IGenerique<Adherent> adherent)
+        private readonly IMapper _mapper;
+        public AdherentController(IGenerique<Adherent> adherent, IMapper mapper)
         {
             _adhrent = adherent;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult<List<Adherent>> Get()
         {
-            return Ok(_adhrent.getAll());
+            return Ok(_adhrent.getAll(sourc => sourc.Include(i => i.livres)));
         }
         [HttpGet("id")]
         public ActionResult<Adherent> GetById(int id) 
         {
-            return Ok(_adhrent.getOne(id));
+            var entity = _adhrent.getOne(id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(entity);
         }
         [HttpPost]
-        public ActionResult Add(Adherent adherent)
+        public ActionResult Add(AdherentDTO adherent)
         {
-           
-                _adhrent.addOne(adherent);
+            var entity = _mapper.Map<Adherent>(adherent);
+                _adhrent.addOne(entity);
             return Ok("adherent was added ");
         }
         [HttpPut]
-        public ActionResult Update(Adherent  adherent) 
+        public ActionResult Update(AdherentDTO  adherent) 
         {
-            _adhrent.UpdateOne(adherent);
+            var entity = _mapper.Map<Adherent>(adherent);
+            _adhrent.UpdateOne(entity);
             return Ok("the adherent was Updated");
         }
         [HttpDelete("id")]
-        public ActionResult Delete(Adherent adherent) 
+        public ActionResult Delete(int adherent) 
         {
-            _adhrent.removeOne(adherent);
+            var entity = _adhrent.getOne(adherent);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            _adhrent.removeOne(entity.Id);
             return Ok("Adherent was removedS"); 
         }
     }

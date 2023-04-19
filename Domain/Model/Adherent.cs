@@ -10,5 +10,6 @@ namespace Domain.Model
     {
         public String cin { get; set; }
         public String metier { get; set; }
+        public List<Livre> livres { get; set; }
     }
 }
